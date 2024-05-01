@@ -2,13 +2,23 @@
 <html>
     <head>
         <link rel="stylesheet" href="index.css">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'  ">
+  
+
+        
     </head>
     <body>
+        <h2 id="title">The awesome website list</h2>
         <input type="text" id="input-el">
-        <button id="input-btn">SAVE INPUT</button>
-        <button id="tab-btn">SAVE TAB</button>
-        <button id="delete-btn">DELETE ALL</button>
-        <ul id="ul-el"></ul>
+        <div class="container">
+            <button id="input-btn">SAVE INPUT</button>
+            <button id="tab-btn">SAVE CURRENT TAB</button>
+            <button id="checked-btn">DELETE CHECKED</button>
+            <button id="delete-btn" >CLEAR LIST</button>
+            
+        </div>
+        <ul id="ul-el" role="listbox" tabindex="0" aria-label="email list"></ul>
         <script src="index.js"></script>
+       
     </body>
 </html>
