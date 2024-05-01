@@ -65,15 +65,40 @@ document.getElementById("ul-el").addEventListener("click", function(e) {
 })
 
 
-chkdBtn.addEventListener("click", function(){
-    console.log("checked")
+// Remove checked items on button click
 
-    // var p = document.getElementById("ul-el")
-    var checkboxes = document.querySelectorAll("input[name=list-item-checkbox]:checked").forEach(e => e.remove());
+document.addEventListener('DOMContentLoaded', function() {
+        var deleteCheckedBtn = document.getElementById('checked-btn');
+        var listItems = document.querySelectorAll('#ul-el li');
+      
+        deleteCheckedBtn.addEventListener('click', function() {
+            listItems.forEach(function(item) {
+            var checkbox = item.querySelector('input[type="checkbox"]');
+            if (checkbox.checked) {
+                // Remove the <li> from the DOM
+              item.remove();
+
+                    // Remove corresponding data from localStorage
+                var itemText = item.textContent.trim(); // Get the text content of the <li> item
+                var storedItems = JSON.parse(localStorage.getItem('myLeads')) || []; // Retrieve stored data
+                var index = storedItems.indexOf(itemText); // Find the index of the item in stored data
+                if (index !== -1) {
+                storedItems.splice(index, 1); // Remove the item from stored data
+                localStorage.setItem('myLeads', JSON.stringify(storedItems)); // Update localStorage
+                }
+
+            }
+          });
+        });
+      });
 
 
 
-    console.log(checkboxes)
+
+
+
+
+
 
     // for (var i = 0; i < checkboxes.length; i++) {
 
@@ -81,7 +106,7 @@ chkdBtn.addEventListener("click", function(){
             // e.parentNode.parentNode.removeChild(e.parentNode);
             
 
-        }
+        
         // if (checkboxes[i].querySelector("delete-checkbox").checked) {
             // var p = document.getElementById("ul-el")
             // var del = document.querySelector("li")
@@ -92,7 +117,7 @@ chkdBtn.addEventListener("click", function(){
         
    
     
-    )
+    
 
 
     
